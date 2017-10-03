@@ -31,6 +31,9 @@ public class MemberInfo {
 	
 	@Column
 	private Date createTime;
+	
+	@Column(length = 3)
+	private Integer age;
 
 	public String getId() {
 		return Id;
@@ -70,6 +73,14 @@ public class MemberInfo {
 
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
+	}
+
+	public Integer getAge() {
+		return age;
+	}
+
+	public void setAge(Integer age) {
+		this.age = age;
 	}
 
 }

@@ -13,6 +13,8 @@ public class MemberInfoDto {
 	
 	private String loginName;
 	
+	private Integer age;
+	
 	public MemberInfoDto(){
 	}
 
@@ -50,5 +52,13 @@ public class MemberInfoDto {
 
 	public void setLoginName(String loginName) {
 		this.loginName = loginName;
+	}
+
+	public Integer getAge() {
+		return age;
+	}
+
+	public void setAge(Integer age) {
+		this.age = age;
 	}
 }

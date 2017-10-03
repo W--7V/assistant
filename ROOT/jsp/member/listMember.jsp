@@ -9,8 +9,8 @@
 </head>
 <body>
 	<!-- <button id="add">新增</button> -->
-	<div>
-		<table id="grid" class="easyui-datagrid" title="Basic DataGrid" style="width:800px;height:250px"/>
+	<div style="height:100%">
+		<table id="grid"/>
 	</div>
 </body>
 <script src="/js/member/list.js"></script>

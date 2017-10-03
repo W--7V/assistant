@@ -1,10 +1,14 @@
 var grid;
 var dialog;
 var list;
-var dialog;
 var listUrl = "/member/listMember";
 var addUrl = "/member/toadd";
 $(function(){
+	
+	var resizeWidth = function(n){
+		return parseInt(($(window).width()) * (1/12)) * n;
+	}
+	
 	grid = $("#grid").datagrid({
 		title: '成员列表',
 		striped: true,
@@ -12,22 +16,22 @@ $(function(){
 		url: listUrl,
 		rownumbers: true,
 		pagination: true,
-//		fitColumns: true,
+		fitColumns: true,
 //		sortOrder: 'asc',
 		loadMsg: "正在努力加载数据，请稍后...",
 //		pageList: [50, 100, 500, 1000],
 		columns: [[{
-			width: '200',
+			width: resizeWidth(1),
 			title: '姓名',
 			align: 'center',
 			field: 'name'
 		}, {
-			width: '200',
+			width: resizeWidth(1),
 			title: '登录名',
 			align: 'center',
 			field: 'loginName'
 		}, {
-			width: '200',
+			width: resizeWidth(1),
 			title: '性别',
 			align: 'center',
 			field: 'gender',
@@ -37,15 +41,30 @@ $(function(){
 			}
 		}]],
 //		onBeforeLoad: function(row, param) {},
-//		onLoadSuccess: function(row, data) {
-//			resizeHeight();
-//		}
+		toolbar:[
+		    { text: '增加', iconCls: 'icon-add', handler: function () {} }
+		],
+		onLoadSuccess: function(row, data) {
+			resizeHeight();
+		}
 	})
 	
 //	$("#add").click(function(){
 //		addFun();
 //	});
 })
+
+var resizeHeight = function() {
+	$('#grid').datagrid('resize', {
+		height: $(window).height() - $(".cut").outerHeight(true) - $(".min_title").outerHeight(true) - 4
+	});
+	if(dialog != null && !dialog.parent().is(":hidden")) {
+		dialog.dialog('resize', {
+			height: top.windowHeight() * 0.7,
+			width: top.windowWidth() * 0.7,
+		});
+	}
+}
 
 var addFun = function(){
 	dialog = parent.sy.modalDialog({

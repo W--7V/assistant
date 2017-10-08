@@ -20,10 +20,10 @@ public class MemberInfo {
 	@Column(length = 32)
 	private String Id;
 	
-	@Column(length = 100)
+	@Column(length = 10)
 	private String name;
 	
-	@Column(length = 100)
+	@Column(length = 10)
 	private String loginName;
 	
 	@Column(length = 1)// ÄÐ£º1    Å®£º0

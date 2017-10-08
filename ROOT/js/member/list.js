@@ -39,6 +39,15 @@ $(function(){
 				if(value == 0)return "女";
 				else return "男";
 			}
+		}, {
+			width: resizeWidth(1),
+			title: '操作',
+			align: 'center',
+			field: 'action',
+			formatter:function(value, row){
+				var operation = '<a title="查看任务" class="" ></a>';
+				return operation;
+			}
 		}]],
 //		onBeforeLoad: function(row, param) {},
 		toolbar:[
@@ -79,4 +88,8 @@ var addFun = function(){
 			}
 		}]
 	})
+}
+
+var listTask = function(mid){
+	
 }

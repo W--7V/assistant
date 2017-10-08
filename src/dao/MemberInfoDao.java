@@ -17,6 +17,7 @@ public class MemberInfoDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 
+	@SuppressWarnings("unchecked")
 	public Object list(){
 		String hql = "From MemberInfo";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);

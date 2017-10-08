@@ -1,12 +1,15 @@
 package entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
@@ -32,7 +35,7 @@ public class Task {
 	private String detail;
 	
 	//¸ºÔðÈË
-	@ManyToOne
+	@ManyToOne(cascade = {CascadeType.ALL},fetch = FetchType.LAZY)
 	private MemberInfo memberInfo;
 
 	public String getId() {

@@ -6,7 +6,7 @@ var addFun = function addFun(){
 	var params = $("#addForm").serialize();
 	$.ajax({
 		type:"post",
-		url:"/jump/saveOrUpdate",
+		url:"/member/saveOrUpdate",
 		dataType:"json",
 		data:params,
 		success:function(data){

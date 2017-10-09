@@ -45,7 +45,7 @@ $(function(){
 			align: 'center',
 			field: 'action',
 			formatter:function(value, row){
-				var operation = '<a title="查看任务" class="" ></a>';
+				var operation = '<a title="查看任务" class="btn btn-info" onclick="listTask(\'' + row.id + '\')">查看任务</a>';
 				return operation;
 			}
 		}]],
@@ -91,5 +91,18 @@ var addFun = function(){
 }
 
 var listTask = function(mid){
-	
+	console.log("111");
+//	console.log(parent);
+//	dialog = parent.$.modalDialog({
+//		title:'任务列表',
+//		height:$(window).height() * 0.8,
+//		width:$(window).width() * 0.8,
+//		url:addUrl,
+//		buttons:[{
+//			text:'保存',
+//			handler:function(){
+//				
+//			}
+//		}]
+//	})
 }

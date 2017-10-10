@@ -51,7 +51,7 @@ $(function(){
 		}]],
 //		onBeforeLoad: function(row, param) {},
 		toolbar:[
-		    { text: '增加', iconCls: 'icon-add', handler: function () {} }
+		    { text: '增加', iconCls: 'icon-add', handler: function () {addFun();} }
 		],
 		onLoadSuccess: function(row, data) {
 			resizeHeight();
@@ -76,22 +76,30 @@ var resizeHeight = function() {
 }
 
 var addFun = function(){
-	dialog = parent.sy.modalDialog({
-		title:'新增成员',
-		height:$(window).height() * 0.8,
-		width:$(window).width() * 0.8,
-		url:addUrl,
-		buttons:[{
-			text:'保存',
-			handler:function(){
-				
-			}
-		}]
-	})
+	$("#createDialog").dialog({
+        title : '新增成员',
+        modal : true,
+        width : '90%',
+        height : '90%',
+        href : '/member/toadd',
+//        buttons:{
+//        	""
+//        }
+	});
 }
 
 var listTask = function(mid){
-	console.log("111");
+//	console.log(parent.sy);
+	$("#createDialog").dialog({
+        title : '任务列表',
+        modal : true,
+        width : '90%',
+        height : '90%',
+        href : '/member/toadd',
+//        buttons:{
+//        	""
+//        }
+	});
 //	console.log(parent);
 //	dialog = parent.$.modalDialog({
 //		title:'任务列表',

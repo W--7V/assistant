@@ -2,7 +2,9 @@ package controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -13,6 +15,7 @@ import util.ResultMsg;
 
 @Controller
 @RequestMapping(value = "/member")
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class MemberInfoController {
 	@Autowired
 	MemberInfoService memberInfoService;
@@ -23,7 +26,7 @@ public class MemberInfoController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "/listMember")
+	@RequestMapping(value = "/listMember",method = RequestMethod.POST)
 	@ResponseBody
 	public PageDto<MemberInfoDto> listMember(){
 		PageDto<MemberInfoDto>page = null;

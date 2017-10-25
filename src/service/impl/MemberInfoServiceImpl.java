@@ -23,6 +23,11 @@ public class MemberInfoServiceImpl implements MemberInfoService {
 	@Override
 	public PageDto<MemberInfoDto> page() throws Exception {
 		@SuppressWarnings("unchecked")
+		
+//		if(){
+//			
+//		}
+		
 		List<MemberInfo>_list = (List<MemberInfo>)memberInfoDao.list();
 		List<MemberInfoDto>list = new ArrayList<MemberInfoDto>();
 		PageDto<MemberInfoDto> pageDto = new PageDto<MemberInfoDto>();

@@ -26,7 +26,7 @@ public class MemberInfoController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "/listMember",method = RequestMethod.POST)
+	@RequestMapping(value = "/list",method = RequestMethod.POST)
 	@ResponseBody
 	public PageDto<MemberInfoDto> listMember(){
 		PageDto<MemberInfoDto>page = null;
@@ -44,7 +44,7 @@ public class MemberInfoController {
 		return mv;
 	}
 	
-	@RequestMapping("/saveOrUpdate")
+	@RequestMapping(value="/saveOrUpdate",method=RequestMethod.POST)
 	@ResponseBody
 	public ResultMsg saveOrUpdate(MemberInfoDto dto){
 		ResultMsg msg = new ResultMsg();

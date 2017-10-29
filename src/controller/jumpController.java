@@ -28,7 +28,7 @@ public class jumpController {
 	public PageDto<MemberInfoDto> toMyjsp(){
 		PageDto<MemberInfoDto>page = null;
 		try {
-			page = memberInfoService.page();
+//			page = memberInfoService.page();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

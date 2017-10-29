@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import dto.MemberInfoDto;
 import dto.PageDto;
+import dto.SearchDto;
 import service.MemberInfoService;
 import util.ResultMsg;
 
@@ -26,12 +27,12 @@ public class MemberInfoController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "/list",method = RequestMethod.POST)
+	@RequestMapping(value = "/list",method = RequestMethod.GET)
 	@ResponseBody
-	public PageDto<MemberInfoDto> listMember(){
+	public PageDto<MemberInfoDto> listMember(SearchDto dto){
 		PageDto<MemberInfoDto>page = null;
 		try {
-			page = memberInfoService.page();
+			page = memberInfoService.page(dto);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

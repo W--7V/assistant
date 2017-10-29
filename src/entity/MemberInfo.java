@@ -1,25 +1,19 @@
 package entity;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Table;
-import javax.persistence.Id;
-
-import org.hibernate.annotations.GenericGenerator;
+import base.entity.BaseEntity;
 
 @Entity
 @Table(name = "t_member")
-public class MemberInfo {
+public class MemberInfo extends BaseEntity{
 
-	@Id
-	@GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid")
-	@Column(length = 32)
-	private String Id;
-	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Column(length = 10)
 	private String name;
 	
@@ -29,19 +23,8 @@ public class MemberInfo {
 	@Column(length = 1)// ÄÐ£º1    Å®£º0
 	private Integer gender;
 	
-	@Column
-	private Date createTime;
-	
 	@Column(length = 3)
 	private Integer age;
-
-	public String getId() {
-		return Id;
-	}
-
-	public void setId(String id) {
-		Id = id;
-	}
 
 	public String getName() {
 		return name;
@@ -65,14 +48,6 @@ public class MemberInfo {
 
 	public void setGender(Integer gender) {
 		this.gender = gender;
-	}
-
-	public Date getCreateTime() {
-		return createTime;
-	}
-
-	public void setCreateTime(Date createTime) {
-		this.createTime = createTime;
 	}
 
 	public Integer getAge() {

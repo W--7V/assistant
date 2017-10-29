@@ -9,4 +9,6 @@ public interface MemberInfoService {
 	public PageDto<MemberInfoDto> page(SearchDto dto) throws Exception;
 	
 	public String saveOrUpdate(MemberInfoDto memberInfoDto) throws Exception;
+	
+	public String softDelete(MemberInfoDto dto) throws Exception;
 }

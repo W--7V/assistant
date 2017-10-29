@@ -23,7 +23,6 @@ public class MemberInfoServiceImpl implements MemberInfoService {
 	MemberInfoDao memberInfoDao;
 	
 	@Override
-	@SuppressWarnings("unchecked")
 	public PageDto<MemberInfoDto> page(SearchDto dto) throws Exception {
 		StringBuffer hql = new StringBuffer("FROM MemberInfo where isDeleted = 0");
 		if(ObjectHelper.isNotEmpty(dto.getName())){
@@ -35,17 +34,17 @@ public class MemberInfoServiceImpl implements MemberInfoService {
 		if(ObjectHelper.isNotEmpty(dto.getGender())){
 			hql.append(" and gender = " + dto.getGender());
 		}
-		
-		List<MemberInfo>_list = (List<MemberInfo>)memberInfoDao.list(hql.toString());
-		List<MemberInfoDto>list = new ArrayList<MemberInfoDto>();
+		PageDto<MemberInfo>_pageDto = memberInfoDao.findDtoByHql(dto, hql.toString());
 		PageDto<MemberInfoDto> pageDto = new PageDto<MemberInfoDto>();
+		List<MemberInfo>_list = _pageDto.getRows();
+		List<MemberInfoDto>list = new ArrayList<MemberInfoDto>();
 		for (MemberInfo memberInfo : _list) {
 			list.add(new MemberInfoDto(memberInfo));
 		}
 		pageDto.setRows(list);
-		pageDto.setTotal(list.size());
-		pageDto.setCurrentpage(1);
-		pageDto.setTotalPage(list.size()/10 + 1);
+		pageDto.setPageSize(_pageDto.getPageSize());
+		pageDto.setTotal(_pageDto.getTotal());
+		pageDto.setTotalPage(_pageDto.getTotalPage());
 		return pageDto;
 	}
 
@@ -53,13 +52,23 @@ public class MemberInfoServiceImpl implements MemberInfoService {
 	public String saveOrUpdate(MemberInfoDto dto) throws Exception {
 		MemberInfo mi = null;
 		if(dto != null && dto.getId() != null){
-			mi = memberInfoDao.get(dto.getId());
+			mi = memberInfoDao.getEntity(dto.getId());
 		}else{
 			mi = new MemberInfo();
 		}
 		BeanUtils.copyProperties(dto, mi);
 		mi.setCreateTime(new Date());
-		memberInfoDao.save(mi);
+		memberInfoDao.saveEntity(mi);
+		return mi.getId();
+	}
+
+	@Override
+	public String softDelete(MemberInfoDto dto) throws Exception {
+		if(ObjectHelper.isEmpty(dto) || ObjectHelper.isEmpty(dto.getId())){
+			
+		}
+		MemberInfo mi = memberInfoDao.getEntity(dto.getId());
+		memberInfoDao.softDeleteEntity(mi);
 		return mi.getId();
 	}
 

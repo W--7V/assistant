@@ -1,8 +1,8 @@
 package dto;
 
 public class SearchDto {
-	private Integer page;
-	private Integer rows;
+	private String page;
+	private String rows;
 	//-------------------------------成员信息---------------------------------------
 	private String name;
 	private Integer gender;
@@ -33,17 +33,16 @@ public class SearchDto {
 	public void setAge(Integer age) {
 		this.age = age;
 	}
-	public Integer getPage() {
+	public String getPage() {
 		return page;
 	}
-	public void setPage(Integer page) {
+	public void setPage(String page) {
 		this.page = page;
 	}
-	public Integer getRows() {
+	public String getRows() {
 		return rows;
 	}
-	public void setRows(Integer rows) {
+	public void setRows(String rows) {
 		this.rows = rows;
 	}
-	
 }

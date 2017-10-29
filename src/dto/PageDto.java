@@ -6,9 +6,9 @@ import java.util.List;
 
 public class PageDto<E> implements Serializable {
 	private static final long serialVersionUID = -6588503204376229169L;
-	private int total; 
-	private List<E> rows = new ArrayList<E>();  
-	private int currentpage; 
+	private int total;
+	private List<E> rows = new ArrayList<E>();
+	private int currentpage;
 	private int totalPage;
 
 	private int pageSize=50; 

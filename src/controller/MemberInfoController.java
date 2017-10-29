@@ -50,10 +50,25 @@ public class MemberInfoController {
 	public ResultMsg saveOrUpdate(MemberInfoDto dto){
 		ResultMsg msg = new ResultMsg();
 		try {
-			memberInfoService.saveOrUpdate(dto);
-			msg.setId(dto.getId());
+			String id = memberInfoService.saveOrUpdate(dto);
+			msg.setId(id);
 			msg.setStatus(true);
-			msg.setMsg("保存成功");
+			msg.setMsg("保存成功！");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return msg;
+	}
+	
+	@RequestMapping(value="/softDelete",method=RequestMethod.DELETE)
+	@ResponseBody
+	public ResultMsg softDelete(MemberInfoDto dto){
+		ResultMsg msg = new ResultMsg();
+		try {
+			String id = memberInfoService.softDelete(dto);
+			msg.setId(id);
+			msg.setStatus(true);
+			msg.setMsg("删除成功！");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

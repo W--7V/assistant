@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import service.MemberInfoService;
 import util.ObjectHelper;
@@ -49,9 +50,10 @@ public class MemberInfoServiceImpl implements MemberInfoService {
 	}
 
 	@Override
+	@Transactional
 	public String saveOrUpdate(MemberInfoDto dto) throws Exception {
 		MemberInfo mi = null;
-		if(dto != null && dto.getId() != null){
+		if(ObjectHelper.isNotEmpty(dto) && ObjectHelper.isNotEmpty(dto.getId())){
 			mi = memberInfoDao.getEntity(dto.getId());
 		}else{
 			mi = new MemberInfo();

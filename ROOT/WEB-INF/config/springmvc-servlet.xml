@@ -45,5 +45,12 @@
 		<property name="prefix" value="/jsp"></property>
 		<property name="suffix" value=".jsp"></property>
 	</bean>
+	
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**"/>
+			<bean class="system.CustomizeInterceotor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
 
 </beans>

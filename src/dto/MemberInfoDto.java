@@ -5,7 +5,7 @@ import org.springframework.beans.BeanUtils;
 import entity.MemberInfo;
 
 public class MemberInfoDto {
-	private String Id;
+	private String id;
 	
 	private String name;
 	
@@ -23,11 +23,11 @@ public class MemberInfoDto {
 	}
 
 	public String getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(String id) {
-		Id = id;
+		this.id = id;
 	}
 
 	public String getName() {
@@ -61,4 +61,5 @@ public class MemberInfoDto {
 	public void setAge(Integer age) {
 		this.age = age;
 	}
+
 }

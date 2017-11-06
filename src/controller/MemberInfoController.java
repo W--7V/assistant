@@ -45,9 +45,24 @@ public class MemberInfoController {
 		return mv;
 	}
 	
-	@RequestMapping(value="/saveOrUpdate",method=RequestMethod.POST)
+	@RequestMapping(value="/save",method=RequestMethod.POST)
 	@ResponseBody
-	public ResultMsg saveOrUpdate(MemberInfoDto dto){
+	public ResultMsg save(MemberInfoDto dto){
+		ResultMsg msg = new ResultMsg();
+		try {
+			String id = memberInfoService.saveOrUpdate(dto);
+			msg.setId(id);
+			msg.setStatus(true);
+			msg.setMsg("±£´æ³É¹¦£¡");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return msg;
+	}
+	
+	@RequestMapping(value="/update",method=RequestMethod.PATCH)
+	@ResponseBody
+	public ResultMsg update(MemberInfoDto dto){
 		ResultMsg msg = new ResultMsg();
 		try {
 			String id = memberInfoService.saveOrUpdate(dto);

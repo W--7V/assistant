@@ -25,22 +25,31 @@ public class BaseEntity implements Serializable{
 	@GeneratedValue(generator = "system-uuid")
 	@GenericGenerator(name = "system-uuid", strategy = "uuid")
 	private String id;
-	
+
 	@Version
-	private Integer version;
-	
+	protected Integer version;
+
 	@Column
-	private Boolean isDeleted;
-	
+	Boolean isDeleted = Boolean.valueOf(false);
+
 	@Column
 	@IndexColumn(name="index_createTime")
 	private Date createTime;
-	
+
 	@Column
 	private Date updateTime;
-	
+
 	@Column
 	private Date deleteTime;
+
+	@Column(length = 32)
+	private String creater;
+
+	@Column(length = 32)
+	private String regenerator;
+	
+	@Column(length = 32)
+	private String deletor;
 
 	public String getId() {
 		return id;
@@ -88,6 +97,30 @@ public class BaseEntity implements Serializable{
 
 	public void setDeleteTime(Date deleteTime) {
 		this.deleteTime = deleteTime;
+	}
+
+	public String getCreater() {
+		return creater;
+	}
+
+	public void setCreater(String creater) {
+		this.creater = creater;
+	}
+
+	public String getRegenerator() {
+		return regenerator;
+	}
+
+	public void setRegenerator(String regenerator) {
+		this.regenerator = regenerator;
+	}
+
+	public String getDeletor() {
+		return deletor;
+	}
+
+	public void setDeletor(String deletor) {
+		this.deletor = deletor;
 	}
 	
 }

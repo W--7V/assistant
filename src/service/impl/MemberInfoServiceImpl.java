@@ -1,7 +1,6 @@
 package service.impl;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
@@ -46,6 +45,7 @@ public class MemberInfoServiceImpl implements MemberInfoService {
 		pageDto.setPageSize(_pageDto.getPageSize());
 		pageDto.setTotal(_pageDto.getTotal());
 		pageDto.setTotalPage(_pageDto.getTotalPage());
+		memberInfoDao.insert();
 		return pageDto;
 	}
 
@@ -59,7 +59,6 @@ public class MemberInfoServiceImpl implements MemberInfoService {
 			mi = new MemberInfo();
 		}
 		BeanUtils.copyProperties(dto, mi);
-		mi.setCreateTime(new Date());
 		memberInfoDao.saveEntity(mi);
 		return mi.getId();
 	}

@@ -11,15 +11,15 @@ import org.springframework.web.servlet.ModelAndView;
 import dto.MemberInfoDto;
 import dto.PageDto;
 import dto.SearchDto;
-import service.MemberInfoService;
+import service.MemberService;
 import util.ResultMsg;
 
 @Controller
 @RequestMapping(value = "/member")
 @CrossOrigin(origins = "*", maxAge = 3600)
-public class MemberInfoController {
+public class MemberController {
 	@Autowired
-	MemberInfoService memberInfoService;
+	MemberService memberInfoService;
 	
 	@RequestMapping(value = "/tolist")
 	public ModelAndView tolist(){
@@ -27,7 +27,7 @@ public class MemberInfoController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "/list",method = RequestMethod.GET)
+	@RequestMapping(value = "/list",method = {RequestMethod.POST,RequestMethod.GET})
 	@ResponseBody
 	public PageDto<MemberInfoDto> listMember(SearchDto dto){
 		PageDto<MemberInfoDto>page = null;

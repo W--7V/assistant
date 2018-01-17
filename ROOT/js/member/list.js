@@ -1,7 +1,7 @@
 var grid;
 var dialog;
 var list;
-var listUrl = "/member/listMember";
+var listUrl = "/member/list";
 var addUrl = "/member/toadd";
 $(function(){
 	

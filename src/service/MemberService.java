@@ -4,7 +4,7 @@ import dto.MemberInfoDto;
 import dto.PageDto;
 import dto.SearchDto;
 
-public interface MemberInfoService {
+public interface MemberService {
 
 	public PageDto<MemberInfoDto> page(SearchDto dto) throws Exception;
 	

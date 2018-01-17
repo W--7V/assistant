@@ -14,7 +14,7 @@
 		var params = $("#addForm").serialize();
 		$.ajax({
 			type:"post",
-			url:"/member/saveOrUpdate",
+			url:"/member/save",
 			dataType:"json",
 			data:params,
 			success:function(data){

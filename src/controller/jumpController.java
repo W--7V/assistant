@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import service.MemberInfoService;
+import service.MemberService;
 import util.ResultMsg;
 import dto.MemberInfoDto;
 import dto.PageDto;
@@ -15,7 +15,7 @@ import dto.PageDto;
 @RequestMapping(value = "/jump")
 public class jumpController {
 	@Autowired
-	MemberInfoService memberInfoService;
+	MemberService memberInfoService;
 	
 	@RequestMapping(value = "/tolist")
 	public ModelAndView tolist(){

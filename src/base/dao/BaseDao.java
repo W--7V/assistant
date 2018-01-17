@@ -82,6 +82,7 @@ public class BaseDao <T extends BaseEntity>{
 	
 	protected void delete(T obj){
 		getSession().delete(obj);
+		getSession().flush();
 	}
 	
 	protected void softDelete(T obj){

@@ -1,8 +1,15 @@
 package entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
 import base.entity.BaseEntity;
 
 @Entity
@@ -25,6 +32,9 @@ public class MemberInfo extends BaseEntity{
 	
 	@Column(length = 3)
 	private Integer age;
+	
+	@OneToMany(cascade={CascadeType.ALL},fetch=FetchType.EAGER,mappedBy="memberInfo")
+	private List<Task>task = new ArrayList<Task>();
 
 	public String getName() {
 		return name;
@@ -56,6 +66,14 @@ public class MemberInfo extends BaseEntity{
 
 	public void setAge(Integer age) {
 		this.age = age;
+	}
+
+	public List<Task> getTask() {
+		return task;
+	}
+
+	public void setTask(List<Task> task) {
+		this.task = task;
 	}
 
 }

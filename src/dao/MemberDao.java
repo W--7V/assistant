@@ -4,14 +4,12 @@ import java.util.List;
 
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import base.dao.AbstractDao;
 import entity.MemberInfo;
 
 @Repository
-@Transactional
-public class MemberInfoDao extends AbstractDao<MemberInfo>{
+public class MemberDao extends AbstractDao<MemberInfo>{
 	@SuppressWarnings("unused")
 	public void insert(){
 		String sql = "SELECT * FROM t_member where gender = 0";

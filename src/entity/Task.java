@@ -30,7 +30,7 @@ public class Task extends BaseEntity{
 	private String detail;
 	
 	//¸ºÔðÈË
-	@ManyToOne(cascade = {CascadeType.ALL},fetch = FetchType.LAZY)
+	@ManyToOne(cascade = {CascadeType.REFRESH,CascadeType.PERSIST},fetch = FetchType.LAZY)
 	private MemberInfo memberInfo;
 
 	public String getItemName() {

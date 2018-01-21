@@ -5,7 +5,7 @@
 
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/config/spring-context.xml</param-value>
+		<param-value>/WEB-INF/classes/spring/spring-context.xml</param-value>
 	</context-param>
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
@@ -31,7 +31,7 @@
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>
-				/WEB-INF/config/springmvc-servlet.xml
+				/WEB-INF/classes/spring/springmvc-servlet.xml
 			</param-value>
 		</init-param>
 	</servlet>

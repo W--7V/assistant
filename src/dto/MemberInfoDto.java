@@ -1,5 +1,8 @@
 package dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.BeanUtils;
 
 import base.dto.EntityDto;
@@ -17,11 +20,13 @@ public class MemberInfoDto extends EntityDto{
 	
 	private Integer age;
 	
+	private List<TaskDto>detail = new ArrayList<>();
+	
 	public MemberInfoDto(){
 	}
 
 	public MemberInfoDto(MemberInfo memberInfo) {
-		BeanUtils.copyProperties(memberInfo, this);
+		BeanUtils.copyProperties(memberInfo, this, new String[]{"detail"});
 		if(memberInfo.getGender() == 0){
 			this.setGenderName("ÄÐ");
 		}else{
@@ -67,6 +72,14 @@ public class MemberInfoDto extends EntityDto{
 
 	public void setGenderName(String genderName) {
 		this.genderName = genderName;
+	}
+
+	public List<TaskDto> getDetail() {
+		return detail;
+	}
+
+	public void setDetail(List<TaskDto> detail) {
+		this.detail = detail;
 	}
 
 }

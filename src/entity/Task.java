@@ -1,6 +1,5 @@
 package entity;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -30,7 +29,7 @@ public class Task extends BaseEntity{
 	private String detail;
 	
 	//¸ºÔðÈË
-	@ManyToOne(cascade = {CascadeType.REFRESH,CascadeType.PERSIST},fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
 	private MemberInfo memberInfo;
 
 	public String getItemName() {

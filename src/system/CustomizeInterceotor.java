@@ -12,7 +12,7 @@ public class CustomizeInterceotor extends HandlerInterceptorAdapter{
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 //		System.out.println("×Ô¶¨ÒåÀ¹½ØÆ÷");
 		System.out.println(request.getRequestURL());
-		System.out.println(request.getQueryString());
+//		System.out.println(request.getQueryString());
 		
 		return super.preHandle(request, response, handler);
 	}

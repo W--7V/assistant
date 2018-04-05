@@ -2,9 +2,13 @@ package service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,7 +19,9 @@ import dao.TaskDao;
 import dto.MemberInfoDto;
 import dto.PageDto;
 import dto.SearchDto;
+import dto.TaskDto;
 import entity.MemberInfo;
+import entity.Task;
 
 @Service("memberService")
 public class MemberServiceImpl implements MemberService {
@@ -24,6 +30,11 @@ public class MemberServiceImpl implements MemberService {
 	MemberDao memberDao;
 	@Autowired
 	TaskDao taskDao;
+	@Autowired
+	JdbcTemplate jdbcTemplate;
+	@SuppressWarnings("rawtypes")
+	@Autowired
+	RedisTemplate redisTemplate;
 	
 	@Override
 	@Transactional(rollbackFor = Exception.class)
@@ -49,6 +60,11 @@ public class MemberServiceImpl implements MemberService {
 		pageDto.setPageSize(_pageDto.getPageSize());
 		pageDto.setTotal(_pageDto.getTotal());
 		pageDto.setTotalPage(_pageDto.getTotalPage());
+//		System.out.println("list");
+		
+//		List<MemberInfo>l = 
+//				Map<String, Object>map = jdbcTemplate.query
+		redisTemplate.opsForValue().set("myStr", "testRedis");
 		return pageDto;
 	}
 
@@ -64,6 +80,12 @@ public class MemberServiceImpl implements MemberService {
 		}
 		BeanUtils.copyProperties(dto, mi);
 		memberDao.saveEntity(mi);
+		for (TaskDto detail : dto.getDetail()) {
+			Task t = new Task();
+			BeanUtils.copyProperties(detail, t);
+			t.setMemberInfo(mi);
+			taskDao.saveEntity(t);
+		}
 		return mi.getId();
 	}
 
@@ -78,7 +100,8 @@ public class MemberServiceImpl implements MemberService {
 //			return mi.getId();
 		}
 		MemberInfo mi = memberDao.getEntity(dto.getId());
-		memberDao.softDeleteEntity(mi);
+//		memberDao.softDeleteEntity(mi);
+		memberDao.deleteEntity(mi);
 		return mi.getId();
 	}
 

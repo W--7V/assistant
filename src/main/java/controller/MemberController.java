@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import service.MemberService;
+import util.ResultMsg;
 import dto.MemberInfoDto;
 import dto.PageDto;
 import dto.SearchDto;
-import service.MemberService;
-import util.ResultMsg;
 
 @Controller
 @RequestMapping(value = "/member")

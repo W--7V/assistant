@@ -2,10 +2,10 @@ package dao;
 
 import org.springframework.stereotype.Repository;
 
-import entity.Order;
 import base.dao.AbstractDao;
+import entity.Good;
 
 @Repository
-public class OrderDao extends AbstractDao<Order>{
+public class GoodDao extends AbstractDao<Good>{
 
 }

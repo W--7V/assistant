@@ -4,6 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import dao.MemberDao;
+import dao.OrderDao;
+import dao.TaskDao;
+import dto.MemberInfoDto;
+import dto.PageDto;
+import dto.SearchDto;
+import dto.TaskDto;
+import entity.MemberInfo;
+import entity.Order;
+import entity.Task;
+import service.MemberService;
+import util.ObjectHelper;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -11,17 +24,6 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import service.MemberService;
-import util.ObjectHelper;
-import dao.MemberDao;
-import dao.TaskDao;
-import dto.MemberInfoDto;
-import dto.PageDto;
-import dto.SearchDto;
-import dto.TaskDto;
-import entity.MemberInfo;
-import entity.Task;
 
 @Service("memberService")
 public class MemberServiceImpl implements MemberService {
@@ -35,6 +37,8 @@ public class MemberServiceImpl implements MemberService {
 	@SuppressWarnings("rawtypes")
 	@Autowired
 	RedisTemplate redisTemplate;
+//	@Autowired
+//	OrderDao orderDao;
 	
 	@Override
 	@Transactional(rollbackFor = Exception.class)
@@ -64,7 +68,11 @@ public class MemberServiceImpl implements MemberService {
 		
 //		List<MemberInfo>l = 
 //				Map<String, Object>map = jdbcTemplate.query
-		redisTemplate.opsForValue().set("myStr", "testRedis");
+//		redisTemplate.opsForValue().set("myStr", "testRedis");
+		Order o = new Order();
+//		o.setCode("1");
+//		o.setNum("1");
+//		orderDao.save(o);
 		return pageDto;
 	}
 

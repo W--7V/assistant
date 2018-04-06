@@ -3,10 +3,10 @@ package dto;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.BeanUtils;
-
 import base.dto.EntityDto;
 import entity.MemberInfo;
+
+import org.springframework.beans.BeanUtils;
 
 public class MemberInfoDto extends EntityDto{
 	

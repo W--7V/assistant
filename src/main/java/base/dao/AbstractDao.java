@@ -9,9 +9,9 @@ import java.util.Map;
 import org.hibernate.Query;
 import org.springframework.transaction.annotation.Transactional;
 
+import base.entity.BaseEntity;
 import dto.PageDto;
 import dto.SearchDto;
-import base.entity.BaseEntity;
 
 public class AbstractDao<E extends BaseEntity> extends BaseDao<E> {
 	protected Class<E> entityClass;

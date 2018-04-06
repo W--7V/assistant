@@ -1,9 +1,9 @@
 package dto;
 
-import org.springframework.beans.BeanUtils;
-
-import entity.Task;
 import base.dto.EntityDto;
+import entity.Task;
+
+import org.springframework.beans.BeanUtils;
 
 public class TaskDto extends EntityDto{
 	//¹ºÎïÏî

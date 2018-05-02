@@ -2,31 +2,33 @@ package service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import dao.MemberDao;
-import dao.OrderDao;
 import dao.TaskDao;
 import dto.MemberInfoDto;
 import dto.PageDto;
 import dto.SearchDto;
 import dto.TaskDto;
 import entity.MemberInfo;
-import entity.Order;
 import entity.Task;
 import service.MemberService;
+import util.MyClassLoader;
 import util.ObjectHelper;
+import util.ResultMsg;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service("memberService")
 public class MemberServiceImpl implements MemberService {
+	
+	Logger logger = Logger.getLogger(MemberServiceImpl.class);
 
 	@Autowired
 	MemberDao memberDao;
@@ -64,20 +66,23 @@ public class MemberServiceImpl implements MemberService {
 		pageDto.setPageSize(_pageDto.getPageSize());
 		pageDto.setTotal(_pageDto.getTotal());
 		pageDto.setTotalPage(_pageDto.getTotalPage());
-//		System.out.println("list");
 		
-//		List<MemberInfo>l = 
-//				Map<String, Object>map = jdbcTemplate.query
-//		redisTemplate.opsForValue().set("myStr", "testRedis");
-		Order o = new Order();
-//		o.setCode("1");
-//		o.setNum("1");
-//		orderDao.save(o);
+//		MyClassLoader m = new MyClassLoader("D:/ResultMsg.class");
+//		Class<?> clazz = m.loadClass("util.ResultMsg");
+//		Class<?> clazz = Class.forName("util.ResultMsg");
+//		System.out.println(clazz.getClassLoader().getClass());
+//		for (Field f : clazz.getDeclaredFields()) {
+//			System.out.println(f.getName());
+//		}
+//		System.out.println(ResultMsg.class.getClassLoader().getClass());
+//		System.out.println(ObjectHelper.class.getClassLoader().getClass());
+		logger.error("test log service");
+		
 		return pageDto;
 	}
 
 	@Override
-	@Transactional
+	@Transactional(propagation=Propagation.REQUIRED)
 	public String saveOrUpdate(MemberInfoDto dto) throws Exception {
 		MemberInfo mi = null;
 		if(ObjectHelper.isNotEmpty(dto) && ObjectHelper.isNotEmpty(dto.getId())){

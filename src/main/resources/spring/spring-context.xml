@@ -16,4 +16,5 @@ http://www.springframework.org/schema/context/spring-context-4.0.xsd
 	
 	<import resource="spring-hibernate.xml" />
 	<import resource="spring-redis.xml" />
+	<import resource="spring-consumer.xml" />
 </beans>

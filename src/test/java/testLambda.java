@@ -18,9 +18,9 @@ public class testLambda {
 	
 	public static void main(String[] args) {
 		List<Integer> numbers = Arrays.asList(1,2,3,4,5,6);
-		testLambda.sumAll(numbers, n -> true);
-		testLambda.sumAll(numbers, n -> n % 2 ==0);
-		testLambda.sumAll(numbers, n -> n > 3);
+//		testLambda.sumAll(numbers, n -> true);
+//		testLambda.sumAll(numbers, n -> n % 2 ==0);
+//		testLambda.sumAll(numbers, n -> n > 3);
 	}
 
 }

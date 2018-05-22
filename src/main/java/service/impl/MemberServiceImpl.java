@@ -25,7 +25,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-@Service("memberService")
+@Service("memberServices")
 public class MemberServiceImpl implements MemberService {
 	
 	Logger logger = Logger.getLogger(MemberServiceImpl.class);
@@ -76,7 +76,7 @@ public class MemberServiceImpl implements MemberService {
 //		}
 //		System.out.println(ResultMsg.class.getClassLoader().getClass());
 //		System.out.println(ObjectHelper.class.getClassLoader().getClass());
-		logger.error("test log service");
+		logger.error("consumer");
 		
 		return pageDto;
 	}

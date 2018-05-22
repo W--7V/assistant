@@ -1,6 +1,12 @@
 package dto;
 
-public class SearchDto {
+import java.io.Serializable;
+
+public class SearchDto implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String page;
 	private String rows;
 	//-------------------------------成员信息---------------------------------------

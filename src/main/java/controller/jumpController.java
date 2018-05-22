@@ -11,7 +11,7 @@ import util.ResultMsg;
 import dto.MemberInfoDto;
 import dto.PageDto;
 
-@Controller
+//@Controller
 @RequestMapping(value = "/jump")
 public class jumpController {
 	@Autowired

@@ -1,5 +1,7 @@
 package controller;
 
+import javax.annotation.Resource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -18,7 +20,8 @@ import dto.SearchDto;
 @RequestMapping(value = "/member")
 @CrossOrigin(origins = "*", maxAge = 3600)
 public class MemberController {
-	@Autowired
+	@Resource(name="memberService")
+//	@Autowired
 	MemberService memberInfoService;
 	
 	@RequestMapping(value = "/tolist")

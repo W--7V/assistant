@@ -1,6 +1,12 @@
 package base.dto;
 
-public class EntityDto {
+import java.io.Serializable;
+
+public class EntityDto implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String id;
 	private Integer version;
 	private String creater;

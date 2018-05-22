@@ -67,8 +67,7 @@ class MyThread implements Runnable{
 		
 		while(true){
 //			synchronized (this.m) {
-//			lock.writeLock().lock();
-			reentrantLock.lock();
+			lock.writeLock().lock();
 			try{
 				if(this.tt.commodity > 0){
 //					doNotify();
@@ -80,8 +79,7 @@ class MyThread implements Runnable{
 					break;
 				}
 			}finally{
-//				lock.writeLock().unlock();
-				reentrantLock.unlock();
+				lock.writeLock().unlock();
 			}
 //			}
 		}

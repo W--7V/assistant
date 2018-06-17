@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dao.MemberDao;
+import dao.MemberDao2;
 import dao.TaskDao;
 import dto.MemberInfoDto;
 import dto.PageDto;
@@ -25,13 +26,15 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-@Service("memberServices")
+@Service("memberService")
 public class MemberServiceImpl implements MemberService {
 	
 	Logger logger = Logger.getLogger(MemberServiceImpl.class);
 
 	@Autowired
 	MemberDao memberDao;
+	@Autowired
+	MemberDao2 memberDao2;
 	@Autowired
 	TaskDao taskDao;
 	@Autowired
@@ -76,7 +79,8 @@ public class MemberServiceImpl implements MemberService {
 //		}
 //		System.out.println(ResultMsg.class.getClassLoader().getClass());
 //		System.out.println(ObjectHelper.class.getClassLoader().getClass());
-		logger.error("consumer");
+//		logger.error("consumer");
+		List<MemberInfo>l = memberDao2.list();
 		
 		return pageDto;
 	}

@@ -48,13 +48,23 @@
 		<!-- 自动扫描注解方式配置的hibernate类文件 -->
 		<property name="packagesToScan" value="entity" />
 	</bean>
+	
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mapperLocations" value="classpath:dao/*.xml"></property>  
+	</bean>
+	
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">  
+        <property name="basePackage" value="dao" />  
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>  
+    </bean>
 
 	<!-- 配置事务管理器 -->
 	<bean name="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 
-
+	<tx:annotation-driven transaction-manager="transactionManager" />
 	<!-- 注解方式配置事物 -->
 	<!-- <tx:annotation-driven transaction-manager="transactionManager"/> <bean 
 		id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"> 

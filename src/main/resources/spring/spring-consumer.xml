@@ -12,5 +12,5 @@
    <dubbo:registry address="zookeeper://47.104.224.83:2181" check="false" ></dubbo:registry>
    <dubbo:protocol name="dubbo" port="28081"/>
   <!-- 要暴露的服务接口 -->
-  <dubbo:reference interface="service.MemberService" id="memberService" />
+  <dubbo:reference interface="service.MemberService" id="memberServices" />
 </beans>

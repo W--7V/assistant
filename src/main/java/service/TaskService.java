@@ -9,5 +9,5 @@ public interface TaskService {
 	
 	public String saveOrUpdate(TaskDto taskDto) throws Exception;
 	
-	public String delete(String id) throws Exception;
+	public void delete(String id) throws Exception;
 }

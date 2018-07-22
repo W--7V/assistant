@@ -11,4 +11,6 @@ public interface MemberService {
 	public String saveOrUpdate(MemberInfoDto memberInfoDto) throws Exception;
 	
 	public String softDelete(MemberInfoDto dto) throws Exception;
+	
+	public String testDelete() throws Exception;
 }

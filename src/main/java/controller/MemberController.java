@@ -1,11 +1,7 @@
 package controller;
 
-import java.lang.reflect.Method;
-
 import javax.annotation.Resource;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.LocalVariableTableParameterNameDiscoverer;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,21 +20,11 @@ import dto.SearchDto;
 @CrossOrigin(origins = "*", maxAge = 3600)
 public class MemberController {
 	@Resource(name="memberService")
-//	@Autowired
 	MemberService memberInfoService;
 	
 	@RequestMapping(value = "/tolist")
 	public ModelAndView tolist(String a, String b){
 		ModelAndView mv = new ModelAndView("/member/listMember");
-		LocalVariableTableParameterNameDiscoverer l = new LocalVariableTableParameterNameDiscoverer();
-		
-		Method[] methods = this.getClass().getDeclaredMethods();
-		for (Method method : methods) {
-			String[] paramNames = l.getParameterNames(method);
-			for (String name : paramNames) {
-				System.out.println(name);
-			}
-		}
 		return mv;
 	}
 	

@@ -66,22 +66,17 @@ class MyThread implements Runnable{
 	public void run() {
 		
 		while(true){
-//			synchronized (this.m) {
 			lock.writeLock().lock();
 			try{
 				if(this.tt.commodity > 0){
-//					doNotify();
 					this.tt.commodity--;
-//					System.out.println("线程"+this.i+"消耗，剩余"+this.tt.commodity);
 					System.out.println(Thread.currentThread().getName()+"消耗，剩余"+this.tt.commodity);
-//					doWait();
 				}else{
 					break;
 				}
 			}finally{
 				lock.writeLock().unlock();
 			}
-//			}
 		}
 	}
 }

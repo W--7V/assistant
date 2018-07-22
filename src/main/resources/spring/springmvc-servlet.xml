@@ -3,15 +3,18 @@
 	xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop" 
 	xsi:schemaLocation="http://www.springframework.org/schema/beans  
 		  http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
 		  http://www.springframework.org/schema/context  
 		  http://www.springframework.org/schema/context/spring-context-3.0.xsd 
 		  http://www.springframework.org/schema/mvc  
-		  http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd ">
+		  http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+		  http://www.springframework.org/schema/aop 
+		  http://www.springframework.org/schema/aop/spring-aop-3.0.xsd  ">
 
 	<mvc:annotation-driven />
-	<context:component-scan base-package="controller,entity">
+	<context:component-scan base-package="controller,entity,aop">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
 
@@ -49,5 +52,8 @@
 			<bean class="system.CustomizeInterceotor"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>
+	
+	<aop:aspectj-autoproxy proxy-target-class="true"></aop:aspectj-autoproxy>
+	
 
 </beans>

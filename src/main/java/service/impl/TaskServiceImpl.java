@@ -14,6 +14,7 @@ import util.ObjectHelper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service("taskService")
@@ -54,12 +55,14 @@ public class TaskServiceImpl implements TaskService {
 	}
 
 	@Override
-	@Transactional
-	public String delete(String id) throws Exception {
+	@Transactional(rollbackFor=Exception.class,propagation=Propagation.NOT_SUPPORTED)
+	public void delete(String id) throws Exception {
 		Task t = taskDao.getEntity(id);
 //		MemberInfo m = t.getMemberInfo();
-		taskDao.deleteEntity(t);
-		return null;
+//		taskDao.deleteEntity(t);
+		taskDao.softDeleteEntity(t);
+//		int i = 5/0;
+		throw new Exception();
 	}
 
 }

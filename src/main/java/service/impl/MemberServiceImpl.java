@@ -13,9 +13,8 @@ import dto.TaskDto;
 import entity.MemberInfo;
 import entity.Task;
 import service.MemberService;
-import util.MyClassLoader;
+import service.TaskService;
 import util.ObjectHelper;
-import util.ResultMsg;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.BeanUtils;
@@ -37,6 +36,8 @@ public class MemberServiceImpl implements MemberService {
 	MemberDao2 memberDao2;
 	@Autowired
 	TaskDao taskDao;
+	@Autowired
+	TaskService taskService;
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 	@SuppressWarnings("rawtypes")
@@ -107,7 +108,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	@Transactional
+	@Transactional(rollbackFor=Exception.class)
 	public String softDelete(MemberInfoDto dto) throws Exception {
 		if(ObjectHelper.isEmpty(dto) || ObjectHelper.isEmpty(dto.getId())){
 			
@@ -119,6 +120,17 @@ public class MemberServiceImpl implements MemberService {
 		MemberInfo mi = memberDao.getEntity(dto.getId());
 //		memberDao.softDeleteEntity(mi);
 		memberDao.deleteEntity(mi);
+		taskService.delete("4028808b61dcb05d0161dcb212610001");
+		return mi.getId();
+	}
+	
+	@Override
+	@Transactional(rollbackFor=Exception.class)
+//	@Transactional
+	public String testDelete() throws Exception {
+		MemberInfo mi = memberDao.getEntity("4028808b61dcb05d0161dcdbc2cb0003");
+		memberDao.softDeleteEntity(mi);
+		taskService.delete("ff80808164a34fc20164a34fc7a40000");
 		return mi.getId();
 	}
 

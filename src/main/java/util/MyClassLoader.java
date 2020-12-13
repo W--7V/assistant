@@ -9,6 +9,7 @@ public class MyClassLoader extends ClassLoader {
 	
 	public MyClassLoader(String classPath){
 		this.classPath = classPath;
+		//
 	}
 	
 	public byte[] loadByte() throws Exception{

@@ -10,5 +10,6 @@ public class ApplicationListenerImpl implements ApplicationListener<ApplicationE
 	@Override
 	public void onApplicationEvent(ApplicationEvent event) {
 //		System.out.println("init++++");
+//		System.out.println("1111");
 	}
 }

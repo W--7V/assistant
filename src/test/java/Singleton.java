@@ -1,7 +1,7 @@
 
 public class Singleton {
 	
-	private static Singleton singleInstance;
+	private static volatile Singleton singleInstance;
 	
 	private Singleton(){
 	}

@@ -19,8 +19,8 @@ import util.ObjectHelper;
 import org.apache.log4j.Logger;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.jdbc.core.JdbcTemplate;
+//import org.springframework.data.redis.core.RedisTemplate;
+//import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -38,11 +38,11 @@ public class MemberServiceImpl implements MemberService {
 	TaskDao taskDao;
 	@Autowired
 	TaskService taskService;
-	@Autowired
-	JdbcTemplate jdbcTemplate;
+//	@Autowired
+//	JdbcTemplate jdbcTemplate;
 	@SuppressWarnings("rawtypes")
-	@Autowired
-	RedisTemplate redisTemplate;
+//	@Autowired
+//	RedisTemplate redisTemplate;
 //	@Autowired
 //	OrderDao orderDao;
 	

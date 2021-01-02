@@ -1,6 +1,9 @@
 package controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -11,11 +14,18 @@ import util.ResultMsg;
 import dto.MemberInfoDto;
 import dto.PageDto;
 
-//@Controller
+@Controller
 @RequestMapping(value = "/jump")
 public class jumpController {
 	@Autowired
 	MemberService memberInfoService;
+	
+	@RequestMapping(value = "/getStr")
+	@ResponseBody
+	public String getStr(){
+		System.out.println("getStr");
+		return "str";
+	}
 	
 	@RequestMapping(value = "/tolist")
 	public ModelAndView tolist(){
@@ -25,7 +35,8 @@ public class jumpController {
 	
 	@RequestMapping(value = "/listMember")
 	@ResponseBody
-	public PageDto<MemberInfoDto> toMyjsp(){
+	public PageDto<MemberInfoDto> toMyjsp(HttpServletRequest request){
+		request.getServletContext();
 		PageDto<MemberInfoDto>page = null;
 		try {
 //			page = memberInfoService.page();
